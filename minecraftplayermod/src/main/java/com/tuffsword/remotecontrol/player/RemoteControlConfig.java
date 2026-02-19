@@ -31,7 +31,7 @@ public final class RemoteControlConfig {
             }
         } else {
             properties.setProperty("enabled", "true");
-            properties.setProperty("relayUrl", "ws://localhost:3000");
+            properties.setProperty("relayUrl", "wss://minecraft-relay.onrender.com");
             try {
                 Files.createDirectories(configPath.getParent());
                 try (OutputStream outputStream = Files.newOutputStream(configPath)) {
@@ -42,7 +42,7 @@ public final class RemoteControlConfig {
         }
 
         boolean enabled = Boolean.parseBoolean(properties.getProperty("enabled", "true"));
-        String relayUrl = properties.getProperty("relayUrl", "ws://localhost:3000").trim();
+        String relayUrl = properties.getProperty("relayUrl", "wss://minecraft-relay.onrender.com").trim();
 
         return new RemoteControlConfig(enabled, relayUrl);
     }

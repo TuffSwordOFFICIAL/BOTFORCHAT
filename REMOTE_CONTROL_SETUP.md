@@ -22,7 +22,7 @@ npm install
 npm start
 ```
 
-Server runs on `http://localhost:3000` by default.
+Server runs on `http://localhost:3000` by default (local) or `https://minecraft-relay.onrender.com` on Render.
 
 **For remote access (Cloudflare Tunnel):**
 ```bash
@@ -58,7 +58,7 @@ Output: `minecraftplayermod/build/libs/remotecontrol-player-1.0.0-player.jar`
 3. Edit `.minecraft/config/remotecontrol-boss.properties`:
    ```properties
    enabled=true
-   relayUrl=http://localhost:3000
+   relayUrl=https://minecraft-relay.onrender.com
    ```
 
 **Other Players (Player Mod):**
@@ -67,9 +67,9 @@ Output: `minecraftplayermod/build/libs/remotecontrol-player-1.0.0-player.jar`
 3. Edit `.minecraft/config/remotecontrol-player.properties`:
    ```properties
    enabled=true
-   relayUrl=ws://YOUR_RELAY_URL:3000
+   relayUrl=wss://minecraft-relay.onrender.com
    ```
-   Replace `YOUR_RELAY_URL` with your Cloudflare tunnel URL or server IP.
+   Replace the URL if you deploy a different relay server.
 
 ---
 
@@ -110,17 +110,16 @@ You'll get a URL like: `https://random-words.trycloudflare.com`
 - Boss mod: `relayUrl=https://random-words.trycloudflare.com`
 - Player mod: `relayUrl=wss://random-words.trycloudflare.com`
 
-### Option 2: Fly.io / Railway (Permanent URL)
+### Option 2: Render (Permanent URL)
 
-Deploy `relayserver/` folder to Fly.io or Railway:
+Deploy `relayserver/` folder to Render:
 
 ```bash
 cd relayserver
-fly launch
-fly deploy
+# Deploy using Render's GitHub integration
 ```
 
-You'll get permanent URL like: `https://your-app.fly.dev`
+You'll get permanent URL like: `https://minecraft-relay.onrender.com`
 
 ### Option 3: VPS with PM2
 
@@ -175,7 +174,7 @@ const PORT = process.env.PORT || 3000;
 `.minecraft/config/remotecontrol-boss.properties`:
 ```properties
 enabled=true
-relayUrl=http://localhost:3000
+relayUrl=https://minecraft-relay.onrender.com
 ```
 
 ### Player Mod Config
@@ -183,7 +182,7 @@ relayUrl=http://localhost:3000
 `.minecraft/config/remotecontrol-player.properties`:
 ```properties
 enabled=true
-relayUrl=ws://localhost:3000
+relayUrl=wss://minecraft-relay.onrender.com
 ```
 
 **Important:** 
