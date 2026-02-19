@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "chatbridge",
+  "version": "${version}",
+  "name": "Chat Bridge",
+  "description": "Reads text from Discord API and maps movement/chat input.",
+  "authors": [
+    "TuffSwordOFFICIAL"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.tuffsword.chatbridge.ChatBridgeClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": ">=1.21",
+    "fabric-api": "*"
+  }
+}
