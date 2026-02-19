@@ -28,6 +28,11 @@ client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
+// Health check endpoint for Fly.io
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
 app.get('/command', (req, res) => {
     res.set('X-Command-Id', String(latestCommandId));
     res.type('text/plain');
@@ -35,6 +40,12 @@ app.get('/command', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`API running on port ${PORT}`));
+const HOST = '0.0.0.0'; // Listen on all interfaces for Fly.io
+
+app.listen(PORT, HOST, () => {
+    console.log(`API running on ${HOST}:${PORT}`);
+    console.log(`Health check: http://localhost:${PORT}/health`);
+    console.log(`Command endpoint: http://localhost:${PORT}/command`);
+});
 
 client.login(token);

@@ -33,19 +33,19 @@ public final class ChatBridgeConfig {
             }
         } else {
             properties.setProperty("enabled", "true");
-            properties.setProperty("apiUrl", "http://localhost:3000/command");
+            properties.setProperty("apiUrl", "https://your-app-name.fly.dev/command");
             properties.setProperty("pollIntervalMs", "16");
             try {
                 Files.createDirectories(configPath.getParent());
                 try (OutputStream outputStream = Files.newOutputStream(configPath)) {
-                    properties.store(outputStream, "Chat Bridge config");
+                    properties.store(outputStream, "Chat Bridge config - Change apiUrl to your Fly.io URL");
                 }
             } catch (IOException ignored) {
             }
         }
 
         boolean enabled = Boolean.parseBoolean(properties.getProperty("enabled", "true"));
-        String apiUrl = properties.getProperty("apiUrl", "http://localhost:3000/command").trim();
+        String apiUrl = properties.getProperty("apiUrl", "https://your-app-name.fly.dev/command").trim();
         int pollIntervalMs = parsePollInterval(properties.getProperty("pollIntervalMs", "16"));
 
         return new ChatBridgeConfig(enabled, apiUrl, pollIntervalMs);

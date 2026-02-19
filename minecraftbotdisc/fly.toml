@@ -1,9 +1,12 @@
-# fly.toml app configuration file generated for discord-bot
+# fly.toml app configuration file for Discord bot
 
 app = "your-app-name"
 primary_region = "iad"
 
 [build]
+
+[env]
+  PORT = "3000"
 
 [http_service]
   internal_port = 3000
@@ -12,6 +15,13 @@ primary_region = "iad"
   auto_start_machines = true
   min_machines_running = 1
   processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "10s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/health"
 
 [[vm]]
   cpu_kind = "shared"
