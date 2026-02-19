@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.tuffsword.remotecontrol.boss.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "KeyboardMixin",
+    "MouseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
